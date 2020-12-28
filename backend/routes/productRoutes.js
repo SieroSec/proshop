@@ -8,6 +8,9 @@ import Product from '../models/productModel.js'
 // @access  Public
 Router.get('/', asyncHandler(async (req, res) => {
    const products = await Product.find({});
+   // // Intentional Example error
+   // res.status(401)
+   // throw new Error('NOT AUTHORISED')
    res.json(products);
 }));
 
