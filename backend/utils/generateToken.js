@@ -9,6 +9,3 @@ const generateToken = (id) => {
 }
 
 export default generateToken
-
-// ex:
-// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmZTlmODU4N2MxNzVjMjk4MGQ5ZWFmOSIsImlhdCI6MTYwOTQxNjY0OSwiZXhwIjoxNjEyMDA4NjQ5fQ.8avZI8oC6jWQGlxULdY4ocdxqWzu1UrNZRhDrVQFTmg

@@ -6,7 +6,7 @@ const protect = asyncHandler(async (req, res, next) => {
    let token //= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmZTlmODU4N2MxNzVjMjk4MGQ5ZWFmOSIsImlhdCI6MTYwOTQxNjY0OSwiZXhwIjoxNjEyMDA4NjQ5fQ.8avZI8oC6jWQGlxULdY4ocdxqWzu1UrNZRhDrVQFTmg'
 
    if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-      console.log(`Token found: ${req.headers.authorization}`)
+      // console.log(`Token found: ${req.headers.authorization}`)
       try {
          // split token from "Bearer" text
          token = req.headers.authorization.split(' ')[1]
@@ -17,7 +17,7 @@ const protect = asyncHandler(async (req, res, next) => {
 
          next()
       } catch (error) {
-         console.error(error)
+         //console.error(error)
          res.sendStatus(401)
          throw new Error('Not Authorized, token failed')
       }
