@@ -11,6 +11,7 @@ const reducer = combineReducers({
    cart: cartReducer,
    userLogin: userLoginReducer,
 })
+
 // if cartItems found in loclastorage, then create cartItemsFromStorage variable, else it will be empty array
 const cartItemsFromStorage = localStorage.getItem('cartItems')
    ? JSON.parse(localStorage.getItem('cartItems'))
