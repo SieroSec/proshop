@@ -9,7 +9,7 @@ export const login = (email, password) => async (dispatch) => {
 
       const config = {
          headers: {
-            //Authorization: 
+            //Authorization:
             'Content-Type': 'application/json'
          }
       }
@@ -35,4 +35,9 @@ export const login = (email, password) => async (dispatch) => {
             : error.message,
       })
    }
+}
+
+export const logout = () => (dispatch) => {
+   localStorage.removeItem('userInfo')
+   dispatch({ type: USER_LOGOUT })
 }
