@@ -80,4 +80,37 @@ const registerUser = asyncHandler(async (req, res) => {
    }
 })
 
-export { authUser, getUserProfile, registerUser }
+// @desc    Update user profile
+// @route   PUT /api/users/profile
+// @access  Private (private = logged in users with token)
+const updateUserProfile = asyncHandler(async (req, res) => {
+   // find user by id
+   const user = await User.findById(req.user._id)
+
+   if (user) {
+      // if user name is in the body, OR it will stay user.name if it's not in the req. body
+      user.name = req.body.name || user.name
+      user.email = req.body.email || user.email
+
+      if (req.body.password) {
+         // password will be encryted because we added bcrypt middleware in the module
+         user.password = req.body.password
+      }
+
+      const updatedUser = await user.save()
+
+      res.json({
+         _id: updatedUser._id,
+         name: updatedUser.name,
+         email: updatedUser.email,
+         isAdmin: updatedUser.isAdmin,
+         token: generateToken(updatedUser._id),
+      })
+
+   } else {
+      res.status(404)
+      res.send('User not found')
+   }
+})
+
+export { authUser, getUserProfile, registerUser, updateUserProfile }
